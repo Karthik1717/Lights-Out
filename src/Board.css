@@ -96,3 +96,21 @@ table tr:last-child td:last-child {
     color: #146C80;
   }
 }
+
+Button {
+  margin-top: 40px;
+  background: #263238;
+  color: #00bcd4;
+  border: 2px solid #00bcd4;
+  border-radius: 5px; 
+  transition: background 400ms ease-out,
+  color 400ms ease-out; 
+  width: 180px;
+  height: 60px;
+}
+
+Button:hover {
+  background: #00bcd4;
+  color: #263238;
+  border-radius: 5px; 
+}

@@ -105,22 +105,26 @@ class Board extends Component {
 		// TODO
 		// make table board
 		// TODO
-		let tblBoard = [];
-		for (let y = 0; y < this.props.nrows; y++) {
-			let row = [];
-			for (let x = 0; x < this.props.ncols; x++) {
-				let coord = `${y}-${x}`;
-				row.push(
-					<Cell
-						key={coord}
-						isLit={this.state.board[y][x]}
-						flipCellsAroundMe={() => this.flipCellsAround(coord)}
-					/>
-				);
+		const makeBoard = () => {
+			let tblBoard = [];
+			for (let y = 0; y < this.props.nrows; y++) {
+				let row = [];
+				for (let x = 0; x < this.props.ncols; x++) {
+					let coord = `${y}-${x}`;
+					row.push(
+						<Cell
+							key={coord}
+							isLit={this.state.board[y][x]}
+							flipCellsAroundMe={() =>
+								this.flipCellsAround(coord)
+							}
+						/>
+					);
+				}
+				tblBoard.push(<tr key={y}>{row}</tr>);
 			}
-			tblBoard.push(<tr key={y}>{row}</tr>);
-		}
-
+			return tblBoard;
+		};
 		return (
 			<div>
 				<div className='Board-title'>
@@ -128,8 +132,13 @@ class Board extends Component {
 					<div className='neon-blue'>OUT</div>
 				</div>
 				<table className='Board'>
-					<tbody>{tblBoard}</tbody>
+					<tbody>{makeBoard()}</tbody>
 				</table>
+				<button
+					onClick={() => this.setState({ board: this.createBoard() })}
+				>
+					New Puzzle
+				</button>
 			</div>
 		);
 	}
