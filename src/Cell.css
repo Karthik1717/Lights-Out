@@ -1,3 +1,4 @@
+
 .Cell {
   height: 100px;
   width: 100px;
@@ -5,6 +6,13 @@
   background-color: #263238;
   transition: background-color 0.7s ease;
 }
+
+@media only screen and (max-width: 480px) {
+  .Cell {
+    height: 75px;
+  }
+}
+
 
 .Cell-lit {
   background-color: #00bcd4;
